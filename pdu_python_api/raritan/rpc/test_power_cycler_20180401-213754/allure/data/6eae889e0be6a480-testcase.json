@@ -1,0 +1,44 @@
+{
+  "uid" : "6eae889e0be6a480",
+  "name" : "TestRaritan.test_power_off",
+  "title" : "Test power off",
+  "time" : {
+    "start" : 1522643876890,
+    "stop" : 1522643878475,
+    "duration" : 1585
+  },
+  "summary" : {
+    "attachments" : 0,
+    "steps" : 0
+  },
+  "failure" : null,
+  "description" : null,
+  "severity" : "NORMAL",
+  "status" : "PASSED",
+  "suite" : {
+    "uid" : "7e135c0f5f5079ae",
+    "name" : "test_power_cycler",
+    "title" : "Test power cycler"
+  },
+  "steps" : [ ],
+  "attachments" : [ ],
+  "issues" : [ ],
+  "testIds" : [ ],
+  "labels" : [ {
+    "name" : "suite-title",
+    "value" : null
+  }, {
+    "name" : "severity",
+    "value" : "normal"
+  }, {
+    "name" : "thread",
+    "value" : "3269-MainThread"
+  }, {
+    "name" : "suite-name",
+    "value" : "test_power_cycler"
+  }, {
+    "name" : "host",
+    "value" : "sj20lab-as2"
+  } ],
+  "parameters" : [ ]
+}

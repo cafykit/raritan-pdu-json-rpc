@@ -1,0 +1,133 @@
+import sys
+sys.path.append('/ws/nechandy-sjc/git/cafykit/lib/topology/devices/raritan/pdupythonapi/raritan')
+
+from raritan import rpc
+from raritan.rpc import pdumodel
+import abc
+
+POWERED_ON = pdumodel.Outlet.PowerState.PS_ON
+POWERED_OFF = pdumodel.Outlet.PowerState.PS_OFF
+
+class Powercycler:
+    @abc.abstractmethod
+    def connect(self):
+        pass
+
+    @abc.abstractmethod
+    def disconnect(self):
+        pass
+
+    @abc.abstractmethod
+    def power_cycle(self):
+        pass
+
+    @abc.abstractmethod
+    def power_on(self):
+        pass
+
+    @abc.abstractmethod
+    def power_off(self):
+        pass
+
+
+class Raritan(Powercycler):
+    """
+    Raritan  power cycler  implementation.
+    Implements various APIs  to connect and do power operations on Raritan PDUs.
+    """
+    def __init__(self, user_name = None, password = None, server = None):
+        self.user_name  =  user_name
+        self.password = password 
+        self.ip_address = server
+
+    def connect(self):
+        """
+        Connects to the power cycler to perform  various operations.
+        param:  ip address, username and password
+        return: True if connect was success else False.
+        """
+
+        try:
+                self.agent = rpc.Agent("https", self.ip_address, self.user_name, self.password)
+                self.pdu = pdumodel.Pdu("/model/pdu/0", self.agent)
+                return True
+        except:
+                return False
+        
+
+    def get_outlets(self):
+        """
+        Get the outlets of the connected power cycler
+        return: True if connect was success else False.
+        """
+        outlets = self.pdu.getOutlets()
+        return outlets
+
+    def power_on(self, port):
+        """
+        Turn ON the requested port
+        param: port number that has to be turned ON
+        return: True if power ON was success else False.
+        """
+        outlets = self.pdu.getOutlets()
+        if not self._verify_port(port-1):
+                return False
+        outlets[port-1].setPowerState(pdumodel.Outlet.PowerState.PS_ON)
+        if outlets[port-1].getState().powerState == POWERED_ON:
+                return True
+        else:
+                return False
+
+    def power_off(self, port):
+        """
+        Turn OFF the requested port
+        param: port number that has to be turned OFF
+        return: True if power OFF was success else False.
+        """
+        outlets = self.pdu.getOutlets()
+        if not self._verify_port(port-1):
+                return False
+        outlets[port-1].setPowerState(pdumodel.Outlet.PowerState.PS_OFF)
+        if outlets[port-1].getState().powerState == POWERED_OFF:
+                return True
+        else:
+                return False
+
+    def power_cycle(self, port):
+        """
+        Power cycle the requested port
+        param: port number that has to be turned OFF
+        return: True if power OFF was success else False.
+        """
+        outlets = self.pdu.getOutlets()
+        if not self._verify_port(port-1):
+                return False
+        response =outlets[port-1].cyclePowerState()
+        if response == 0:
+                return True
+        else:
+                return False
+
+    def get_state(self, port):
+        """
+        Get the current state of the requested port
+        param: port number
+        return: state
+        """
+        outlets = self.pdu.getOutlets()
+        state = (outlets[port-1].getState())
+        return state
+ 
+    def _verify_port(self, port):
+        """
+        Check whether the input port is a valid port
+        param: port number
+        return: True if valid False iinvalid
+        """
+        outlets = self.pdu.getOutlets()
+        if port >= len(outlets) or port < 0:
+                return False
+        else: 
+                return True
+
+

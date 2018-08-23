@@ -1,0 +1,44 @@
+{
+  "uid" : "784664c7db8735b",
+  "name" : "TestRaritan.test_connect",
+  "title" : "Test connect",
+  "time" : {
+    "start" : 1522643874830,
+    "stop" : 1522643876453,
+    "duration" : 1623
+  },
+  "summary" : {
+    "attachments" : 0,
+    "steps" : 0
+  },
+  "failure" : null,
+  "description" : null,
+  "severity" : "NORMAL",
+  "status" : "PASSED",
+  "suite" : {
+    "uid" : "7e135c0f5f5079ae",
+    "name" : "test_power_cycler",
+    "title" : "Test power cycler"
+  },
+  "steps" : [ ],
+  "attachments" : [ ],
+  "issues" : [ ],
+  "testIds" : [ ],
+  "labels" : [ {
+    "name" : "suite-title",
+    "value" : null
+  }, {
+    "name" : "severity",
+    "value" : "normal"
+  }, {
+    "name" : "thread",
+    "value" : "3269-MainThread"
+  }, {
+    "name" : "suite-name",
+    "value" : "test_power_cycler"
+  }, {
+    "name" : "host",
+    "value" : "sj20lab-as2"
+  } ],
+  "parameters" : [ ]
+}

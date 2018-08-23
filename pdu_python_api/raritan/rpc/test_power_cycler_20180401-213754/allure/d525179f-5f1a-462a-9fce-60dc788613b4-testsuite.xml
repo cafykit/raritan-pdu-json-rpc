@@ -1,0 +1,66 @@
+<ns0:test-suite xmlns:ns0="urn:model.allure.qatools.yandex.ru" start="1522643874830" stop="1522643880865">
+  <name>test_power_cycler</name>
+  <test-cases>
+    <test-case start="1522643874830" status="passed" stop="1522643876453">
+      <name>TestRaritan.test_connect</name>
+      <attachments/>
+      <steps/>
+      <labels>
+        <label name="severity" value="normal"/>
+        <label name="thread" value="3269-MainThread"/>
+        <label name="host" value="sj20lab-as2"/>
+      </labels>
+    </test-case>
+    <test-case start="1522643876454" status="passed" stop="1522643876602">
+      <name>TestRaritan.test_get_outlets</name>
+      <attachments/>
+      <steps/>
+      <labels>
+        <label name="severity" value="normal"/>
+        <label name="thread" value="3269-MainThread"/>
+        <label name="host" value="sj20lab-as2"/>
+      </labels>
+    </test-case>
+    <test-case start="1522643876603" status="passed" stop="1522643876888">
+      <name>TestRaritan.test_get_state</name>
+      <attachments/>
+      <steps/>
+      <labels>
+        <label name="severity" value="normal"/>
+        <label name="thread" value="3269-MainThread"/>
+        <label name="host" value="sj20lab-as2"/>
+      </labels>
+    </test-case>
+    <test-case start="1522643876890" status="passed" stop="1522643878475">
+      <name>TestRaritan.test_power_off</name>
+      <attachments/>
+      <steps/>
+      <labels>
+        <label name="severity" value="normal"/>
+        <label name="thread" value="3269-MainThread"/>
+        <label name="host" value="sj20lab-as2"/>
+      </labels>
+    </test-case>
+    <test-case start="1522643878477" status="passed" stop="1522643880039">
+      <name>TestRaritan.test_power_on</name>
+      <attachments/>
+      <steps/>
+      <labels>
+        <label name="severity" value="normal"/>
+        <label name="thread" value="3269-MainThread"/>
+        <label name="host" value="sj20lab-as2"/>
+      </labels>
+    </test-case>
+    <test-case start="1522643880040" status="passed" stop="1522643880865">
+      <name>TestRaritan.test_power_cycle</name>
+      <attachments/>
+      <steps/>
+      <labels>
+        <label name="severity" value="normal"/>
+        <label name="thread" value="3269-MainThread"/>
+        <label name="host" value="sj20lab-as2"/>
+      </labels>
+    </test-case>
+  </test-cases>
+  <labels/>
+</ns0:test-suite>

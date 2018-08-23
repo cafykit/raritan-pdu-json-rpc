@@ -1,0 +1,93 @@
+{
+  "time" : {
+    "start" : 1522643874830,
+    "stop" : 1522643880865,
+    "duration" : 6035
+  },
+  "testSuites" : [ {
+    "uid" : "7e135c0f5f5079ae",
+    "name" : "test_power_cycler",
+    "title" : "Test power cycler",
+    "time" : {
+      "start" : 1522643874830,
+      "stop" : 1522643880865,
+      "duration" : 6035
+    },
+    "statistic" : {
+      "total" : 6,
+      "passed" : 6,
+      "pending" : 0,
+      "canceled" : 0,
+      "failed" : 0,
+      "broken" : 0
+    },
+    "description" : null,
+    "testCases" : [ {
+      "uid" : "784664c7db8735b",
+      "name" : "TestRaritan.test_connect",
+      "title" : "Test connect",
+      "time" : {
+        "start" : 1522643874830,
+        "stop" : 1522643876453,
+        "duration" : 1623
+      },
+      "severity" : "NORMAL",
+      "status" : "PASSED"
+    }, {
+      "uid" : "fa0d0c1396544c3f",
+      "name" : "TestRaritan.test_get_outlets",
+      "title" : "Test get outlets",
+      "time" : {
+        "start" : 1522643876454,
+        "stop" : 1522643876602,
+        "duration" : 148
+      },
+      "severity" : "NORMAL",
+      "status" : "PASSED"
+    }, {
+      "uid" : "95c8f49f1dfb44fb",
+      "name" : "TestRaritan.test_get_state",
+      "title" : "Test get state",
+      "time" : {
+        "start" : 1522643876603,
+        "stop" : 1522643876888,
+        "duration" : 285
+      },
+      "severity" : "NORMAL",
+      "status" : "PASSED"
+    }, {
+      "uid" : "6eae889e0be6a480",
+      "name" : "TestRaritan.test_power_off",
+      "title" : "Test power off",
+      "time" : {
+        "start" : 1522643876890,
+        "stop" : 1522643878475,
+        "duration" : 1585
+      },
+      "severity" : "NORMAL",
+      "status" : "PASSED"
+    }, {
+      "uid" : "aea69dab3a6313bb",
+      "name" : "TestRaritan.test_power_on",
+      "title" : "Test power on",
+      "time" : {
+        "start" : 1522643878477,
+        "stop" : 1522643880039,
+        "duration" : 1562
+      },
+      "severity" : "NORMAL",
+      "status" : "PASSED"
+    }, {
+      "uid" : "f93100b410edec9e",
+      "name" : "TestRaritan.test_power_cycle",
+      "title" : "Test power cycle",
+      "time" : {
+        "start" : 1522643880040,
+        "stop" : 1522643880865,
+        "duration" : 825
+      },
+      "severity" : "NORMAL",
+      "status" : "PASSED"
+    } ]
+  } ]
+}

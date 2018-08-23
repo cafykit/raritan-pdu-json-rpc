@@ -1,0 +1,350 @@
+<!-- Macros -->
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>test/topology/device/test_power_cycler.py</title>
+    <style>h1, h2, h3, h4, td, th, a, p, span, center, .btn, .badge, .table, .parallel-run {
+  font-family: -apple-system, Lato, Helvetica, Arial, sans-serif;
+}
+h1, h2 {
+  color:#005cb3;
+  text-align: center;
+}
+h3, h4 {
+  color:#1468b5;
+}
+hr {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  border: 0;
+  border-top: 1px solid #d6d6d6;
+}
+.container {
+  margin-right: auto;
+  margin-left: auto;
+  padding: 5px;
+  width: 97%;
+  max-width: 750px;
+  min-width: 350px;
+}
+.parallel-run {
+  color: #ffffff;
+  font-size: 10px;
+  padding: 4px 8px;
+  border-radius: 4px;
+  background-color: #59d5a8;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+}
+.badge {
+  min-width: 40px;
+  padding: 4px 8px;
+  font-size: 12px;
+  font-weight: bold;
+  color: #ffffff;
+  line-height: 1;
+  vertical-align: middle;
+  white-space: nowrap;
+  text-align: center;
+  background-color: #8b8b8b;
+  border-radius: 12px;
+}
+a {
+  color: #337ab7;
+  text-decoration: none;
+}
+.btn {
+  text-align: center;
+  vertical-align: middle;
+  white-space: nowrap;
+  padding: 5px 10px;
+  font-size: 13px;
+  border-radius: 5px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  cursor: default;
+  color: #ffffff;
+  background-color: #337ab7;
+}
+.btn:hover {
+  color: #ffffff;
+  background-color: #398dd6;
+}
+.btn:active {
+  color: #d9d9d9;
+  background-color: #265a87;
+  box-shadow: inset 0 0 5px #555555;
+}
+.table {
+  vertical-align: middle;
+  word-wrap: break-word;
+  table-layout:fixed;
+  width: 100%;
+  max-width: 100%;
+  border: 1px solid;
+  border-color: #dedede;
+  border-collapse: collapse;
+}
+td, th {
+  font-size: 14px;
+  height: 20px;
+  vertical-align: middle;
+  border: 1px solid #e2e2e2;
+  padding: 6px;
+}
+thead th {
+  color: #4a4a4a;
+  background-color: #e2e2e2;
+  border-bottom: 2px solid #d7d7d7;
+}
+.table-striped > tbody > tr:nth-of-type(odd) {
+  background-color: #f9f9f9;
+}
+.fail-log {
+  color: #e62020;
+}
+.result {
+  color: #ffffff;
+}
+.passed{
+  color: #44a662;
+}
+.failed {
+  color: #d94341;
+}
+.xfailed, .xpassed {
+  color: orange;
+}
+.errored, .blocked, .skipped, .aborted {
+  color: #377bb5;
+}
+.notapp {
+  background-color: #888888;
+}
+.pl-summary {
+  font-weight: bold;
+}
+.win-sep {
+  color: #a6a6a6;
+}
+</style>
+</head>
+<body>
+  <div class="container">
+    <h2>['test/topology/device/test_power_cycler.py']</h2>
+    <hr>
+    <!-- Summary -->
+    <h3>Summary</h3>
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th><center>Passed</center></th>
+          <th><center>Xpassed</center></th>
+          <th><center>Failed</center></th>
+          <th><center>Skipped</center></th>
+          <th><center>Xfailed</center></th>
+          <th><center>Total</center></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+  <td><center>6</center></td>
+  <td><center>0</center></td>
+  <td><center>0</center></td>
+  <td><center>0</center></td>
+  <td><center>0</center></td>
+  <th><center>6</center></th>
+</tr>
+      </tbody>
+    </table>
+
+    <!-- Testcase Status Summary -->
+    <h3>Testcase Status Summary</h3>
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th><left>Testcase Name</left></th>
+          <th><left>Result</left></th>
+          <th><left>Fail Log</left></th>
+        </tr>
+      </thead>
+      <tbody>
+        
+  <tr>
+    <td><left>TestRaritan.test_connect</left></td>
+    <td class=passed><left>passed</left></td>
+    <td class="fail-log"><left></left></td>
+  </tr>
+
+  <tr>
+    <td><left>TestRaritan.test_get_outlets</left></td>
+    <td class=passed><left>passed</left></td>
+    <td class="fail-log"><left></left></td>
+  </tr>
+
+  <tr>
+    <td><left>TestRaritan.test_get_state</left></td>
+    <td class=passed><left>passed</left></td>
+    <td class="fail-log"><left></left></td>
+  </tr>
+
+  <tr>
+    <td><left>TestRaritan.test_power_off</left></td>
+    <td class=passed><left>passed</left></td>
+    <td class="fail-log"><left></left></td>
+  </tr>
+
+  <tr>
+    <td><left>TestRaritan.test_power_on</left></td>
+    <td class=passed><left>passed</left></td>
+    <td class="fail-log"><left></left></td>
+  </tr>
+
+  <tr>
+    <td><left>TestRaritan.test_power_cycle</left></td>
+    <td class=passed><left>passed</left></td>
+    <td class="fail-log"><left></left></td>
+  </tr>
+
+      </tbody>
+    </table>
+
+    <!-- Build Info -->
+
+    <h3>Build Info</h3>
+      <p style="line-height:1.8em; word-wrap:break-word; font-size:13px">
+      <span class="badge">Image</span>
+      &nbsp;Unknown</p>
+    <table class="table table-bordered">
+        <col width="30%">
+        <tbody>
+          <tr>
+            <td>XR EFR</td>
+            <td>Unknown</td>
+          </tr>
+          <tr>
+            <td>XR workspace</td>
+            <td>Unknown</td>
+          </tr>
+          <tr>
+            <td>Calvados EFR</td>
+            <td>Unknown</td>
+          </tr>
+          <tr>
+            <td>Calvados workspace</td>
+            <td>Unknown</td>
+          </tr>
+          
+        </tbody>
+    </table>
+
+    <!-- Detailed Report -->
+
+	<h3>Detailed Results</h3>
+<p>
+  <span class="badge">&nbsp;&#128336; 10s&nbsp;</span>&nbsp;
+    <!--[if mso]>
+    <a style="font-size: 14px;" href="http://arcee.cisco.com/ws/nechandy-sjc/git/cafyap/work/archive/test_power_cycler_20180401-213754/allure/index.html">View allure report &gt;</a>
+    <![endif]-->
+    <!--[if !mso]><!-->
+    <a class="btn" href="http://arcee.cisco.com/ws/nechandy-sjc/git/cafyap/work/archive/test_power_cycler_20180401-213754/allure/index.html">View allure report &gt;</a>
+    <!--<![endif]-->
+    <!--[if mso]>
+    <a style="font-size: 14px;" href="http://arcee.cisco.com/ws/nechandy-sjc/git/cafyap/work/archive/test_power_cycler_20180401-213754/email_report.html">View Summary report &gt;</a>
+    <![endif]-->
+    <!--[if !mso]><!-->
+    <a class="btn" href="http://arcee.cisco.com/ws/nechandy-sjc/git/cafyap/work/archive/test_power_cycler_20180401-213754/email_report.html">View Summary report &gt;</a>
+    <!--<![endif]-->
+</p>
+
+    <!-- Run Info -->
+
+    <h3>Run Info</h3>
+    <table class="table table-bordered">
+      <col width="30%">
+      <tbody>
+      <tr>
+        <td>TestBed</td>
+        <td>None</td>
+      </tr>
+      <tr>
+        <td>Submitter</td>
+        <td>nechandy</td>
+      </tr>
+       <tr>
+        <td>Run directory</td>
+        <td>/ws/nechandy-sjc/git/cafykit</td>
+      </tr>
+    </tr>
+     <tr>
+      <td>Git commit id</td>
+      <td>f5ef58801886dc367444700d0e8bd45fef24e0b4</td>
+    </tr>
+      </tr>
+       <tr>
+        <td>Script list</td>
+        <td>['test/topology/device/test_power_cycler.py']</td>
+      </tr>
+      <tr>
+        <td>Start time</td>
+        <td>Sun Apr  1 21:37:54 2018</td>
+      </tr>
+      <tr>
+        <td>Stop time</td>
+        <td>Sun Apr  1 21:38:04 2018</td>
+      </tr>
+      <tr>
+        <td>Run time</td>
+        <td>10s</td>
+      </tr>
+      
+      </tr>
+          <tr>
+            <td>Cafy repo</td>
+            <td>/ws/nechandy-sjc/git/cafyap</td>
+          </tr>
+      </tr>
+      <tr>
+        <td>Exec host</td>
+        <td>sj20lab-as2</td>
+      </tr>
+      <tr>
+        <td>Python version</td>
+        <td>3.5.0</td>
+      </tr>
+      <tr>
+        <td>Exec platform</td>
+        <td>Linux-2.6.32-642.11.1.el6.x86_64-x86_64-with-redhat-6.6-Santiago</td>
+      </tr>
+      <tr>
+        <td>Topology file</td>
+        <td>None</td>
+      </tr>
+      <tr>
+        <td>Archive</td>
+        <td>/ws/nechandy-sjc/git/cafyap/work/archive/test_power_cycler_20180401-213754</td>
+      </tr>
+      <tr>
+        <td>Allure report link</td>
+        <td><a href="http://arcee.cisco.com/ws/nechandy-sjc/git/cafyap/work/archive/test_power_cycler_20180401-213754/allure/index.html">http://arcee.cisco.com/ws/nechandy-sjc/git/cafyap/work/archive/test_power_cycler_20180401-213754/allure/index.html</a></td>
+      </tr>
+      </tbody>
+    </table>
+
+
+</body>
+</html>

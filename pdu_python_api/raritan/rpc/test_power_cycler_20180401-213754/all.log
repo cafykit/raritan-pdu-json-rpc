@@ -1,0 +1,56 @@
+-Info-----2018-04-01T21-37-55[MainThread][topo_mgr]> TGEN platform is SPIRENT, Spirent object is created
+-Info-----2018-04-01T21-37-55[MainThread][zermatt-uut-infra]> zermatt-uut-infra: Setting default CLI handle to vty
+-Info-----2018-04-01T21-37-55[MainThread][zermatt-uut-infra]> zermatt-uut-infra: Setting default Data Model handle to ydk
+-Info-----2018-04-01T21-37-55[MainThread][turin-uut-infra]> turin-uut-infra: Setting default CLI handle to vty
+-Info-----2018-04-01T21-37-55[MainThread][turin-uut-infra]> turin-uut-infra: Setting default Data Model handle to ydk
+-Info-----2018-04-01T21-37-55[MainThread][pxe-lab174-02]> pxe-lab174-02: Setting default CLI handle to ydk
+-Warning--2018-04-01T21-37-55[MainThread][pxe-lab174-02]> pxe-lab174-02: No data model handles are found. Data model operations cannot be used
+-Info-----2018-04-01T21-37-55[MainThread][fretta-peer-infra]> fretta-peer-infra: Setting default CLI handle to vty
+-Info-----2018-04-01T21-37-55[MainThread][fretta-peer-infra]> fretta-peer-infra: Setting default Data Model handle to ydk
+-Info-----2018-04-01T21-37-55[MainThread][taihu-peer-infra]> taihu-peer-infra: Setting default CLI handle to vty
+-Info-----2018-04-01T21-37-55[MainThread][taihu-peer-infra]> taihu-peer-infra: Setting default Data Model handle to ydk
+-Info-----2018-04-01T21-37-55[MainThread][fretta-uut-infra]> fretta-uut-infra: Setting default CLI handle to vty
+-Info-----2018-04-01T21-37-55[MainThread][fretta-uut-infra]> fretta-uut-infra: Setting default Data Model handle to ydk
+-Warning--2018-04-01T21-37-55[MainThread][raritan_pc]> raritan_pc: No handles defined
+-Info-----2018-04-01T21-37-55[MainThread][asr9k-peer-infra]> asr9k-peer-infra: Setting default CLI handle to vty
+-Info-----2018-04-01T21-37-55[MainThread][asr9k-peer-infra]> asr9k-peer-infra: Setting default Data Model handle to ydk
+-Info-----2018-04-01T21-37-56[MainThread][topo_mgr]> TGEN platform is SPIRENT, Spirent object is created
+-Info-----2018-04-01T21-37-56[MainThread][zermatt-uut-infra]> zermatt-uut-infra: Setting default CLI handle to vty
+-Info-----2018-04-01T21-37-56[MainThread][zermatt-uut-infra]> zermatt-uut-infra: Setting default Data Model handle to ydk
+-Info-----2018-04-01T21-37-56[MainThread][turin-uut-infra]> turin-uut-infra: Setting default CLI handle to vty
+-Info-----2018-04-01T21-37-56[MainThread][turin-uut-infra]> turin-uut-infra: Setting default Data Model handle to ydk
+-Info-----2018-04-01T21-37-56[MainThread][pxe-lab174-02]> pxe-lab174-02: Setting default CLI handle to ydk
+-Warning--2018-04-01T21-37-56[MainThread][pxe-lab174-02]> pxe-lab174-02: No data model handles are found. Data model operations cannot be used
+-Info-----2018-04-01T21-37-56[MainThread][fretta-peer-infra]> fretta-peer-infra: Setting default CLI handle to vty
+-Info-----2018-04-01T21-37-56[MainThread][fretta-peer-infra]> fretta-peer-infra: Setting default Data Model handle to ydk
+-Info-----2018-04-01T21-37-56[MainThread][taihu-peer-infra]> taihu-peer-infra: Setting default CLI handle to vty
+-Info-----2018-04-01T21-37-56[MainThread][taihu-peer-infra]> taihu-peer-infra: Setting default Data Model handle to ydk
+-Info-----2018-04-01T21-37-56[MainThread][fretta-uut-infra]> fretta-uut-infra: Setting default CLI handle to vty
+-Info-----2018-04-01T21-37-56[MainThread][fretta-uut-infra]> fretta-uut-infra: Setting default Data Model handle to ydk
+-Warning--2018-04-01T21-37-56[MainThread][raritan_pc]> raritan_pc: No handles defined
+-Info-----2018-04-01T21-37-56[MainThread][asr9k-peer-infra]> asr9k-peer-infra: Setting default CLI handle to vty
+-Info-----2018-04-01T21-37-56[MainThread][asr9k-peer-infra]> asr9k-peer-infra: Setting default Data Model handle to ydk
+-Title----2018-04-01T21-37-56[MainThread][cafy]> Start test:  TestRaritan.test_connect
+-Success--2018-04-01T21-37-56[MainThread][Raritan]> Raritan connection Success
+-Title----2018-04-01T21-37-56[MainThread][cafy]> Finish test: TestRaritan.test_connect (passed)
+-Info-----2018-04-01T21-37-56[MainThread][cafy]> ================================================================================
+-Title----2018-04-01T21-37-56[MainThread][cafy]> Start test:  TestRaritan.test_get_outlets
+-Success--2018-04-01T21-37-56[MainThread][Raritan]> Number of outlets:
+-Success--2018-04-01T21-37-56[MainThread][Raritan]> 20
+-Title----2018-04-01T21-37-56[MainThread][cafy]> Finish test: TestRaritan.test_get_outlets (passed)
+-Info-----2018-04-01T21-37-56[MainThread][cafy]> ================================================================================
+-Title----2018-04-01T21-37-56[MainThread][cafy]> Start test:  TestRaritan.test_get_state
+-Title----2018-04-01T21-37-56[MainThread][cafy]> Finish test: TestRaritan.test_get_state (passed)
+-Info-----2018-04-01T21-37-56[MainThread][cafy]> ================================================================================
+-Title----2018-04-01T21-37-56[MainThread][cafy]> Start test:  TestRaritan.test_power_off
+-Success--2018-04-01T21-37-58[MainThread][Raritan]> Powered OFF port 1, 2 & 3
+-Title----2018-04-01T21-37-58[MainThread][cafy]> Finish test: TestRaritan.test_power_off (passed)
+-Info-----2018-04-01T21-37-58[MainThread][cafy]> ================================================================================
+-Title----2018-04-01T21-37-58[MainThread][cafy]> Start test:  TestRaritan.test_power_on
+-Success--2018-04-01T21-38-00[MainThread][Raritan]> Powered OFF port 1,2 & 4
+-Title----2018-04-01T21-38-00[MainThread][cafy]> Finish test: TestRaritan.test_power_on (passed)
+-Info-----2018-04-01T21-38-00[MainThread][cafy]> ================================================================================
+-Title----2018-04-01T21-38-00[MainThread][cafy]> Start test:  TestRaritan.test_power_cycle
+-Success--2018-04-01T21-38-00[MainThread][Raritan]> Power cycled port 1 & 2
+-Title----2018-04-01T21-38-00[MainThread][cafy]> Finish test: TestRaritan.test_power_cycle (passed)
+-Info-----2018-04-01T21-38-00[MainThread][cafy]> ================================================================================
