@@ -3,6 +3,8 @@ import base64
 import raritan.rpc
 import ssl
 import http.client
+import logging
+logging.basicConfig(level=logging.DEBUG)
 
 # JSON module
 #
@@ -73,15 +75,22 @@ class Agent(object):
                 'authorization': "Basic %s" % b64auth.decode('ascii')
             }
 
-        try:
-            conn.request("POST", target, request_json, headers)
-            res = conn.getresponse()
-        except IOError as e:
-            if e.args[1] == 302 and not redirected:
-                # handle HTTP-to-HTTPS redirect and try again
-                if self.handle_http_redirect(target, e.args[3]):
-                    return self.json_rpc(target, method, params, True)
-            raise raritan.rpc.HttpException("Opening URL %s at %s failed: %s" % (target, self.url, e))
+        max_retries = 3
+        retry = 1
+        while retry <= max_retries:
+            try:
+                logging.debug(f"POST Request Retry Count - {retry}/{max_retries}")
+                retry = retry + 1
+                conn.request("POST", target, request_json, headers)
+                res = conn.getresponse()
+                break
+            except IOError as e:
+                if retry == max_retries:
+                    if e.args[1] == 302 and not redirected:
+                        # handle HTTP-to-HTTPS redirect and try again
+                        if self.handle_http_redirect(target, e.args[3]):
+                            return self.json_rpc(target, method, params, True)
+                    raise raritan.rpc.HttpException("Opening URL %s at %s failed: %s" % (target, self.url, e))
 
         # get and process response
         resp_code = res.getcode()
