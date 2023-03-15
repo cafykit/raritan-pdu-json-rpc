@@ -3,8 +3,6 @@ import base64
 import raritan.rpc
 import ssl
 import http.client
-import logging
-logging.basicConfig(level=logging.DEBUG)
 
 # JSON module
 #
@@ -79,13 +77,12 @@ class Agent(object):
         retry = 1
         while retry <= max_retries:
             try:
-                logging.debug(f"POST Request Retry Count - {retry}/{max_retries}")
                 retry = retry + 1
                 conn.request("POST", target, request_json, headers)
                 res = conn.getresponse()
                 break
-            except IOError as e:
-                if retry == max_retries:
+            except Exception as e:
+                if retry > max_retries:
                     if e.args[1] == 302 and not redirected:
                         # handle HTTP-to-HTTPS redirect and try again
                         if self.handle_http_redirect(target, e.args[3]):
