@@ -73,15 +73,20 @@ class Agent(object):
                 'authorization': "Basic %s" % b64auth.decode('ascii')
             }
 
-        try:
-            conn.request("POST", target, request_json, headers)
-            res = conn.getresponse()
-        except IOError as e:
-            if e.args[1] == 302 and not redirected:
-                # handle HTTP-to-HTTPS redirect and try again
-                if self.handle_http_redirect(target, e.args[3]):
-                    return self.json_rpc(target, method, params, True)
-            raise raritan.rpc.HttpException("Opening URL %s at %s failed: %s" % (target, self.url, e))
+        retries = 5
+        while retries > 0:
+            try:
+                retries = retries - 1
+                conn.request("POST", target, request_json, headers)
+                res = conn.getresponse()
+                break
+            except IOError as e:
+                if e.args[1] == 302 and not redirected:
+                    # handle HTTP-to-HTTPS redirect and try again
+                    if self.handle_http_redirect(target, e.args[3]):
+                        return self.json_rpc(target, method, params, True)
+                if retries == 0:
+                    raise raritan.rpc.HttpException("Opening URL %s at %s failed: %s" % (target, self.url, e))
 
         # get and process response
         resp_code = res.getcode()
