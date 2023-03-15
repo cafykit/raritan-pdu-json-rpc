@@ -49,7 +49,7 @@ class Agent(object):
             return True
     
     @Helper.EventLoop(interval=10, retries=3)
-    def post_request(conn, target, request_json, headers):
+    def post_request(self, conn, target, request_json, headers):
         conn.request("POST", target, request_json, headers)
         res = conn.getresponse()
         return res
@@ -81,7 +81,7 @@ class Agent(object):
             }
 
         try:
-            res = post_request(conn, target, request_json, headers)
+            res = self.post_request(conn, target, request_json, headers)
         except IOError as e:
             if e.args[1] == 302 and not redirected:
                 # handle HTTP-to-HTTPS redirect and try again
