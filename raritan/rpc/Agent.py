@@ -49,7 +49,8 @@ class Agent(object):
             return True
     
     @Helper.EventLoop(interval=10, retries=3)
-    def post_request(self, conn, target, request_json, headers):
+    def post_request(self, ip_address, target, request_json, headers, context):
+        conn = http.client.HTTPSConnection(ip_address, context=context) #self.url
         conn.request("POST", target, request_json, headers)
         res = conn.getresponse()
         return res
@@ -64,7 +65,6 @@ class Agent(object):
 
         ctx = ssl.SSLContext(ssl.PROTOCOL_SSLv23)
         pdu_ip_address = self.url.replace("https://", "")
-        conn = http.client.HTTPSConnection(pdu_ip_address, context=ctx) #self.url
 
         if self.token != None:
             headers = {
@@ -81,7 +81,7 @@ class Agent(object):
             }
 
         try:
-            res = self.post_request(conn, target, request_json, headers)
+            res = self.post_request(pdu_ip_address, target, request_json, headers, ctx)
         except IOError as e:
             if e.args[1] == 302 and not redirected:
                 # handle HTTP-to-HTTPS redirect and try again
