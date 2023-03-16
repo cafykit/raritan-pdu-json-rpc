@@ -48,7 +48,7 @@ class Agent(object):
                 print("Redirected to: " + self.url)
             return True
     
-    @Helper.EventLoop(interval=10, retries=3, timeout=200)
+    @Helper.EventLoop(interval=10, retries=3, timeout=400)
     def post_request(self, ip_address, target, request_json, headers, context):
         conn = http.client.HTTPSConnection(ip_address, context=context) #self.url
         conn.request("POST", target, request_json, headers)
