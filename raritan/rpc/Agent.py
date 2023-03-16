@@ -3,6 +3,7 @@ import base64
 import raritan.rpc
 import ssl
 import http.client
+from utils.helper import Helper
 
 # JSON module
 #
@@ -46,6 +47,12 @@ class Agent(object):
             if self.debug:
                 print("Redirected to: " + self.url)
             return True
+    
+    @Helper.EventLoop(interval=10, retries=3, timeout=400)
+    def post_request(self, conn, target, request_json, headers):
+        conn.request("POST", target, request_json, headers)
+        res = conn.getresponse()
+        return res
 
     def json_rpc(self, target, method, params=[], redirected=False):
 
@@ -73,21 +80,14 @@ class Agent(object):
                 'authorization': "Basic %s" % b64auth.decode('ascii')
             }
 
-        max_retries = 3
-        retry = 1
-        while retry <= max_retries:
-            try:
-                retry = retry + 1
-                conn.request("POST", target, request_json, headers)
-                res = conn.getresponse()
-                break
-            except Exception as e:
-                if retry > max_retries:
-                    if e.args[1] == 302 and not redirected:
-                        # handle HTTP-to-HTTPS redirect and try again
-                        if self.handle_http_redirect(target, e.args[3]):
-                            return self.json_rpc(target, method, params, True)
-                    raise raritan.rpc.HttpException("Opening URL %s at %s failed: %s" % (target, self.url, e))
+        try:
+            res = self.post_request(conn, target, request_json, headers)
+        except IOError as e:
+            if e.args[1] == 302 and not redirected:
+                # handle HTTP-to-HTTPS redirect and try again
+                if self.handle_http_redirect(target, e.args[3]):
+                    return self.json_rpc(target, method, params, True)
+            raise raritan.rpc.HttpException("Opening URL %s at %s failed: %s" % (target, self.url, e))
 
         # get and process response
         resp_code = res.getcode()
