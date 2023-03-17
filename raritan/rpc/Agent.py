@@ -3,7 +3,6 @@ import base64
 import raritan.rpc
 import ssl
 import http.client
-from utils.helper import Helper
 
 # JSON module
 #
@@ -47,13 +46,6 @@ class Agent(object):
             if self.debug:
                 print("Redirected to: " + self.url)
             return True
-    
-    @Helper.EventLoop(interval=10, retries=3, timeout=400)
-    def post_request(self, ip_address, target, request_json, headers, context):
-        conn = http.client.HTTPSConnection(ip_address, context=context) #self.url
-        conn.request("POST", target, request_json, headers)
-        res = conn.getresponse()
-        return res
 
     def json_rpc(self, target, method, params=[], redirected=False):
 
@@ -80,14 +72,22 @@ class Agent(object):
                 'authorization': "Basic %s" % b64auth.decode('ascii')
             }
 
-        try:
-            res = self.post_request(pdu_ip_address, target, request_json, headers, ctx)
-        except IOError as e:
-            if e.args[1] == 302 and not redirected:
-                # handle HTTP-to-HTTPS redirect and try again
-                if self.handle_http_redirect(target, e.args[3]):
-                    return self.json_rpc(target, method, params, True)
-            raise raritan.rpc.HttpException("Opening URL %s at %s failed: %s" % (target, self.url, e))
+        max_retries = 3
+        retry = 1
+        while retry <= max_retries:
+            try:
+                conn = http.client.HTTPSConnection(pdu_ip_address, context=ctx) #self.url
+                conn.request("POST", target, request_json, headers)
+                res = conn.getresponse()
+                break
+            except IOError as e:
+                if retry == max_retries:
+                    if e.args[1] == 302 and not redirected:
+                        # handle HTTP-to-HTTPS redirect and try again
+                        if self.handle_http_redirect(target, e.args[3]):
+                            return self.json_rpc(target, method, params, True)
+                    raise raritan.rpc.HttpException("Opening URL %s at %s failed: %s" % (target, self.url, e))
+            retry = retry + 1
 
         # get and process response
         resp_code = res.getcode()
