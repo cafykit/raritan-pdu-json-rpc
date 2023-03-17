@@ -57,7 +57,6 @@ class Agent(object):
 
         ctx = ssl.SSLContext(ssl.PROTOCOL_SSLv23)
         pdu_ip_address = self.url.replace("https://", "")
-        conn = http.client.HTTPSConnection(pdu_ip_address, context=ctx) #self.url
 
         if self.token != None:
             headers = {
@@ -73,15 +72,22 @@ class Agent(object):
                 'authorization': "Basic %s" % b64auth.decode('ascii')
             }
 
-        try:
-            conn.request("POST", target, request_json, headers)
-            res = conn.getresponse()
-        except IOError as e:
-            if e.args[1] == 302 and not redirected:
-                # handle HTTP-to-HTTPS redirect and try again
-                if self.handle_http_redirect(target, e.args[3]):
-                    return self.json_rpc(target, method, params, True)
-            raise raritan.rpc.HttpException("Opening URL %s at %s failed: %s" % (target, self.url, e))
+        max_retries = 3
+        retry = 1
+        while retry <= max_retries:
+            try:
+                conn = http.client.HTTPSConnection(pdu_ip_address, context=ctx) #self.url
+                conn.request("POST", target, request_json, headers)
+                res = conn.getresponse()
+                break
+            except IOError as e:
+                if retry == max_retries:
+                    if e.args[1] == 302 and not redirected:
+                        # handle HTTP-to-HTTPS redirect and try again
+                        if self.handle_http_redirect(target, e.args[3]):
+                            return self.json_rpc(target, method, params, True)
+                    raise raritan.rpc.HttpException("Opening URL %s at %s failed: %s" % (target, self.url, e))
+            retry = retry + 1
 
         # get and process response
         resp_code = res.getcode()
