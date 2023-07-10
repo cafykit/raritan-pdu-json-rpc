@@ -72,11 +72,11 @@ class Agent(object):
                 'authorization': "Basic %s" % b64auth.decode('ascii')
             }
 
-        max_retries = 3
+        max_retries = 5
         retry = 1
         while retry <= max_retries:
             try:
-                conn = http.client.HTTPSConnection(pdu_ip_address, context=ctx) #self.url
+                conn = http.client.HTTPSConnection(pdu_ip_address, context=ctx, timeout=30) #self.url
                 conn.request("POST", target, request_json, headers)
                 res = conn.getresponse()
                 break
